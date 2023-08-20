@@ -31,17 +31,21 @@ int main()
 		mid=(low+high)/2;
 		if(a[mid]==n)
 		{
-			printf("element %d is found",n);
+			printf("element %d is found at %d",n,mid);
 			break;	
 		}
         if(a[mid]<n)
         {
-            low=mid-1;
+            low=mid+1;
         }
         else
         {
-            high=mid+1;
+            high=mid-1;
         }
+	}
+	if(low>high)
+	{
+		printf("element is not found");
 	}
 }
 
