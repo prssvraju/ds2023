@@ -23,4 +23,5 @@ int* readArr(int n)
     }
 
     return res;
+    
 }
