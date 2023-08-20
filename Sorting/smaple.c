@@ -21,6 +21,6 @@ int* readArr(int n)
     {
         scanf("%d",&a[i]);
     }
-    return res;
 
+    return res;
 }
