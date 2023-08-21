@@ -22,6 +22,7 @@ void lin_s(int a[10],int n,int k)
         if(a[i]==k)
         {
             return i;
+            break;
         }
     }
     if(i==n)
