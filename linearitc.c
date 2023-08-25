@@ -3,8 +3,6 @@ int l_search(int[],int,int);
 int lr_search(int[],int,int);
 int b_search(int[],int,int);
 int br_search(int[],int,int,int);
-
-
 int main()
 {
     int n,a[10],k,i,index;
