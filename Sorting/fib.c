@@ -1,7 +1,6 @@
 #include<stdio.h>
 int getfibnumber(int);
 int fibsearch(int[],int,int);
-
 int main()
 {
     int a[10],n,i,k,index;
@@ -23,23 +22,22 @@ int main()
         printf("Element is found at %d",index);
     }
     return 0;
-
-
  }
  int fibsearch(int a[10],int n,int k)
  {
-    int low,high,loc,flag,index;
+    int i,low,high,loc,flag,index;
     low=0;
     high=n-1;
     loc=-1;
     flag=0;
-    while(flag!=1 && low<=high)
+    index=0;
+    while((flag!=1)&&(low<=high))
     {
         index=getfibnumber(n);
-        if(a[index+low]==k)
+        if(k==a[index+low])
         {
             flag=1;
-            loc=index+low;
+            loc=low+index;
             break;
         }
         else if(a[index+low]>k)
@@ -52,7 +50,7 @@ int main()
         }
         n=high-low+1;
     }
-    if(flag == 1)
+    if(flag==1)
     {
         return loc;
     }
@@ -63,22 +61,22 @@ int main()
  }
  int getfibnumber(int n)
  {
-    int fb1,fb2,fb3;
+    int fb1,fb2,fbn;
     fb1=0;
     fb2=1;
-    fb3=0;
-    if(n==1||n==0)
+    fbn=0;
+    if(n==1)
     {
         return 0;
     }
-    else
+    while(fbn<n)
     {
-        while(fb3<n)
-        {
-            fb3=fb1+fb2;
-            fb1=fb2;
-            fb2=fb3;
-        }
-        return fb1;
+        fbn=fb1+fb2;
+        fb1=fb2;
+        fb2=fbn;
     }
+    return fb1;
+   // printf("The fib number is \t%d",fb1);
+
  }
+ 
