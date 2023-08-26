@@ -67,6 +67,14 @@ void insertionSort(int a[10],int n)
     for(i=1;i<n;i++)
     {
         temp=a[i];
+        // Alternative way - I
+        // j=i-1;
+        // while(j>=0 && a[j]>temp)
+        // {
+        //     a[j+1]=a[j];
+        //     j--;
+        // }
+        // Alternative way - II
         for(j=i-1;j>=0;j--)
         {
             if(a[j]>temp)
@@ -78,7 +86,7 @@ void insertionSort(int a[10],int n)
                 break;
             }
         }
-        a[j+1]=temp;
+         a[j+1]=temp;
     }
 }
 
