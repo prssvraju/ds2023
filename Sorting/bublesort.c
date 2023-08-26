@@ -1,6 +1,7 @@
 #include<stdio.h>
 void bubbleSort(int[],int);
 void selectionSort(int[],int);
+void insertionSort(int[],int);
 int main()
 {
     int a[10],n,i;
@@ -15,7 +16,7 @@ int main()
     {
         printf("\t%d",a[i]);
     }
-    selectionSort(a,n);
+    insertionSort(a,n);
     printf("\nElement after sorting\n");
     for(i=0;i<n;i++)
     {
@@ -26,25 +27,24 @@ int main()
 void bubbleSort(int a[10],int n)
 {
     int i,j,temp;
-    for(i=0;i<n;i++)
+    for(i=0;i<n-1;i++)
     {
         for(j=0;j<n-i-1;j++)
         {
             if(a[j+1]<a[j])
             {
-                temp = a[j+1];
+                temp=a[j+1];
                 a[j+1]=a[j];
                 a[j]=temp;
             }
         }
     }
 }
-
 void selectionSort(int a[10],int n)
 {
-   int min,i,j,temp;
-   for(i=0;i<n;i++)
-   {
+    int i,j,temp,min;
+    for(i=0;i<n;i++)
+    {
         min=i;
         for(j=i+1;j<n;j++)
         {
@@ -53,11 +53,34 @@ void selectionSort(int a[10],int n)
                 min=j;
             }
         }
-        if(min!=i)
+        if(i!=min)
         {
             temp=a[i];
             a[i]=a[min];
             a[min]=temp;
         }
-   }
+    }
 }
+void insertionSort(int a[10],int n)
+{
+    int i,j,temp;
+    for(i=1;i<n;i++)
+    {
+        temp=a[i];
+        for(j=i-1;j>=0;j--)
+        {
+            if(a[j]>temp)
+            {
+                a[j+1]=a[j];
+            }
+            else
+            {
+                break;
+            }
+        }
+        a[j+1]=temp;
+    }
+}
+
+
+
