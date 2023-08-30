@@ -10,21 +10,20 @@ int main()
     {
         scanf("%d",&a[i]);
     }
-    //a[i]=99;
-    // printf("\nElement before sorting\n");
-    // for(i=0;i<n;i++)
-    // {
-    //     printf("\t%d",a[i]);
-    // }
+    printf("\nElement before sorting\n");
+    for(i=0;i<n;i++)
+    {
+        printf("\t%d",a[i]);
+    }
+    a[i]=99;
     quickSort(a,0,n);
     printf("\nElement after sorting\n");
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
         printf("\t%d",a[i]);
     }
     return 0;
 }
-
 void quickSort(int a[10],int low,int high)
 {
     int j;
@@ -35,6 +34,7 @@ void quickSort(int a[10],int low,int high)
         quickSort(a,j+1,high);
     }
 }
+
 int partition(int a[10],int low,int high)
 {
     int i,j,pivot,temp;
@@ -43,7 +43,7 @@ int partition(int a[10],int low,int high)
     pivot=a[low];
     while(i<j)
     {
-        while(a[i]<=pivot&& i<high)
+        while(a[i]<=pivot && i<high)
         {
             i++;
         }
@@ -62,7 +62,5 @@ int partition(int a[10],int low,int high)
     a[low]=a[j];
     a[j]=temp;
     return j;
+
 }
-
-
-
