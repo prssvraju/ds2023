@@ -2,6 +2,10 @@
 void bubbleSort(int[],int);
 void selectionSort(int[],int);
 void insertionSort(int[],int);
+int partition(int[],int,int);
+void quickSort(int[],int,int);
+void mergeSort(int[],int,int);
+void merge(int[],int,int,int);
 int main()
 {
     int a[10],n,i;
@@ -16,9 +20,10 @@ int main()
     {
         printf("\t%d",a[i]);
     }
-    insertionSort(a,n);
+    //a[i]=99;
+    mergeSort(a,0,n);
     printf("\nElement after sorting\n");
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
         printf("\t%d",a[i]);
     }
@@ -89,5 +94,89 @@ void insertionSort(int a[10],int n)
             }
         }
          a[j+1]=temp;
+    }
+}
+void quickSort(int a[10],int low,int high)
+{
+    int j;
+    if(low<high)
+    {
+        j=partition(a,low,high+1);
+        quickSort(a,low,j-1);
+        quickSort(a,j+1,high);
+    }
+}
+
+int partition(int a[10],int low,int high)
+{
+    int i,j,pivot,temp;
+    i=low;
+    j=high;
+    pivot=a[low];
+    while(i<j)
+    {
+        while(a[i]<=pivot && i<high)
+        {
+            i++;
+        }
+        while(a[j]>pivot && j>low)
+        {
+            j--;
+        }
+        if(i<j)
+        {
+            temp=a[i];
+            a[i]=a[j];
+            a[j]=temp;
+        }
+    }
+    temp=a[low];
+    a[low]=a[j];
+    a[j]=temp;
+    return j;
+}
+void mergeSort(int a[10],int low,int high)
+{
+    int mid;
+    if(low<high)
+    {
+        mid=(low+high)/2;
+        mergeSort(a,low,mid);
+        mergeSort(a,mid+1,high);
+        merge(a,low,mid,high);
+    }
+}
+void merge(int a[10],int low,int mid,int high)
+{
+    int b[10],i,j,k;
+    k=low;
+    i=low;
+    j=mid+1;
+    while(i<=mid && j<=high)
+    {
+        if(a[i]<a[j])
+        {
+            b[k]=a[i];
+            k++;i++;
+        }
+        else
+        {
+            b[k]=a[j];
+            j++;k++;
+        }
+    }
+    while(i<=mid)
+    {
+         b[k]=a[i];
+         k++;i++;
+    }
+    while(j<=high)
+    {
+        b[k]=a[j];
+        j++;k++;
+    }
+    for(i=low;i<=high;i++)
+    {
+        a[i]=b[i];
     }
 }

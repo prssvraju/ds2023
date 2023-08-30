@@ -1,5 +1,4 @@
-    // printf("\nElement before sorting\n");
-    // for(i=0;i<n;i++)
-    // {
-    //     printf("\t%d",a[i]);
-    // }
+for(i=last;i>=first; i--)
+  {
+    a[i] = b[--k];        // copying back the sorted list to a[]
+  }
