@@ -40,6 +40,8 @@ void bubbleSort(int a[10],int n)
         }
     }
 }
+
+
 void selectionSort(int a[10],int n)
 {
     int i,j,temp,min;
@@ -89,6 +91,3 @@ void insertionSort(int a[10],int n)
          a[j+1]=temp;
     }
 }
-
-
-
