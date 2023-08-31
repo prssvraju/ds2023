@@ -35,44 +35,34 @@ void mergeSort(int a[10],int low,int high)
         merge(a,low,mid,high);
     }
 }
-void merge(int a[10],int low, int mid,int high)
+void merge(int a[10],int low,int mid,int high)
 {
-    int b[10];
-    int i,j,k;
+    int i,j,k,b[10];
     i=low;
     j=mid+1;
     k=low;
     while(i<=mid && j<=high)
     {
-        if(a[i]<a[j])
+        if(a[i]<=a[j])
         {
             b[k]=a[i];
-            k++;
-            i++;
+            k++;i++;
         }
-        else{
+        else
+        {
             b[k]=a[j];
-            k++;
-            j++;
+            k++;j++;
         }
     }
-    if(i>mid)
+    while(i<=mid)
     {
-        while(j<=high)
-        {
-             b[k]=a[j];
-            k++;
-            j++;
-
-        }
+        b[k]=a[i];
+        k++;i++;
     }
-    else{
-        while(i<=mid)
-        {
-            b[k]=a[i];
-            k++;
-            i++;
-        }
+    while(j<=high)
+    {
+        b[k]=a[j];
+        k++;j++;
     }
     for(i=low;i<=high;i++)
     {
