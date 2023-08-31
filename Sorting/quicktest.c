@@ -1,6 +1,6 @@
 #include<stdio.h>
 void quickSort(int[],int,int);
-int partition(int[],int,int);
+int partation(int[],int,int);
 int main()
 {
     int n,i;
@@ -15,7 +15,7 @@ int main()
     quickSort(arr,0,n);
     printf("Elements after Sorting"); 
     for(i=0;i<n;i++)
-    {
+    { 
         printf("%d \t",arr[i]);
     } 
 }
@@ -24,18 +24,18 @@ void quickSort(int a[10],int low,int high)
     int j;
     if(low<high)
     {
-        j=partition(a,low,high+1);
+        j=partation(a,low,high+1);
         quickSort(a,low,j-1);
         quickSort(a,j+1,high);
     }
 }
 
-int partition(int a[10],int low,int high)
+int partation(int a[10],int low,int high)
 {
     int i,j,pivot,temp;
-    pivot = a[low];
     i=low;
     j=high;
+    pivot=a[low];
     while(i<j)
     {
         while(a[i]<=pivot && i<high)
@@ -57,6 +57,5 @@ int partition(int a[10],int low,int high)
     a[low]=a[j];
     a[j]=temp;
     return j;
-
 }
 
