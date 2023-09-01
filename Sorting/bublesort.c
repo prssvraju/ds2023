@@ -6,6 +6,9 @@ int partition(int[],int,int);
 void quickSort(int[],int,int);
 void mergeSort(int[],int,int);
 void merge(int[],int,int,int);
+int largeNo(int[],int);
+int noOfDigits(int);
+void radixSort(int[],int);
 
 int main()
 {
@@ -21,10 +24,10 @@ int main()
     {
         printf("\t%d",a[i]);
     }
-    a[i]=99;
-    quickSort(a,0,n);
+    //a[i]=99;
+    mergeSort(a,0,n);
     printf("\nElement after sorting\n");
-    for(i=1;i<=n;i++)
+    for(i=0;i<n;i++)
     {
         printf("\t%d",a[i]);
     }
@@ -179,5 +182,59 @@ void merge(int a[10],int low,int mid,int high)
     for(i=low;i<=high;i++)
     {
         a[i]=b[i];
+    }
+}
+int largeNo(int a[10],int n)
+{
+    int large,i;
+    large=a[0];
+    for(i=0;i<n;i++)
+    {
+        if(a[i]>large)
+        {
+            large=a[i];
+        }
+    }
+    return large;
+}
+
+int noOfDigits(int n)
+{
+    int digits=0;
+    while(n>0)
+    {
+        digits=digits+1;
+        n=n/10;
+    }
+    return digits;
+}
+void radixSort(int a[10],int n)
+{
+    int buckets[10][12],bc[10],large,pass,nop,i,j,k;
+    int rem,divisor=1;
+    large=largeNo(a,n);
+    nop=noOfDigits(large);
+    for(pass=0;pass<nop;pass++)
+    {
+        for(i=0;i<10;i++)
+        {
+            bc[i]=0;
+        }
+        for(i=0;i<n;i++)
+        {
+            rem=(a[i]/divisor)%10;
+            buckets[rem][bc[rem]]=a[i];
+            bc[rem]=bc[rem]+1;
+        }
+        i=0;
+        for(k=0;k<10;k++)
+        {
+            for(j=0;j<bc[k];j++)
+            {
+                a[i]=buckets[k][j];
+                i++;
+            }
+        }
+        divisor = divisor*10;
     }
 }
