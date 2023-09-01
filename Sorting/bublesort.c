@@ -27,7 +27,7 @@ int main()
     for(i=1;i<=n;i++)
     {
         printf("\t%d",a[i]);
-    }
+    } 
     return 0;
 }
 void bubbleSort(int a[10],int n)
@@ -165,11 +165,11 @@ void merge(int a[10],int low,int mid,int high)
             b[k]=a[j];
             j++;k++;
         }
-    }
+    }   
     while(i<=mid)
     {
-         b[k]=a[i];
-         k++;i++;
+        b[k]=a[i];
+        k++;i++;
     }
     while(j<=high)
     {
