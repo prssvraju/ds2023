@@ -21,8 +21,8 @@ int main()
     {
         printf("\t%d",a[i]);
     }
-    //a[i]=99;
-    mergeSort(a,0,n);
+    a[i]=99;
+    quickSort(a,0,n);
     printf("\nElement after sorting\n");
     for(i=1;i<=n;i++)
     {
@@ -116,11 +116,11 @@ int partition(int a[10],int low,int high)
     pivot=a[low];
     while(i<j)
     {
-        while(a[i]<=pivot && i<high)
+        while(a[i]>=pivot && i<high)
         {
             i++;
         }
-        while(a[j]>pivot && j>low)
+        while(a[j]<=pivot && j>low)
         {
             j--;
         }
