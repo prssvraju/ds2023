@@ -4,6 +4,7 @@ void selection_s(int[],int);
 void insertion_s(int[],int);
 void quick_s(int[],int,int);
 int partation(int[],int,int);
+//raghu
 int main()
 {
     int n,a[10],i;
