@@ -18,7 +18,7 @@ int main()
     }
     mergeSort(a,0,n);
     printf("\n---Elements After sorting---\n");
-    for(i=1;i<=n;i++)
+    for(i=0;i<n;i++)
     {
         printf("%d\t",a[i]);
     }
@@ -37,36 +37,39 @@ void mergeSort(int a[10],int low,int high)
 }
 void merge(int a[10],int low,int mid,int high)
 {
-    int i,j,k,b[10];
-    i=low;
-    j=mid+1;
-    k=low;
-    while(i<=mid && j<=high)
-    {
-        if(a[i]<=a[j])
-        {
-            b[k]=a[i];
-            k++;i++;
-        }
-        else
-        {
-            b[k]=a[j];
-            k++;j++;
-        }
-    }
-    while(i<=mid)
+   int b[10],i,j,k;
+   i=low;
+   j=mid+1;
+   k=low;
+   while(i<=mid && j<=high)
+   {
+    if(a[i]<=a[j])
     {
         b[k]=a[i];
-        k++;i++;
+        k++;
+        i++;
     }
-    while(j<=high)
+    else
     {
         b[k]=a[j];
-        k++;j++;
+        k++;
+        j++;
     }
-    for(i=low;i<=high;i++)
-    {
-        a[i]=b[i];
-    }
-
+   }
+   while(i<=mid)
+   {
+        b[k]=a[i];
+        k++;
+        i++;
+   }
+   while(j<=high)
+   {
+        b[k]=a[j];
+        k++;
+        j++;
+   }
+   for(i=low;i<=high;i++)
+   {
+    a[i]=b[i];
+   }
 }
