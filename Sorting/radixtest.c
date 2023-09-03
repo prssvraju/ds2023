@@ -50,12 +50,12 @@ int noOfDigits(int n)
 }
 void radix(int a[10],int n)
 {
-    int bucket[10][12],bc[10],divisor=1,i,j,k,rem;
-    int large,pass,nop;
+    int bucket[10][12],bc[10],i,j,k,divisor=1;
+    int rem,nop,pass,large;
     large=largestNo(a,n);
     nop=noOfDigits(large);
-    printf("\nLargest no %d\n",large);
-    printf("\nNo of Digits %d\n",nop);
+    printf("\nLargest is %d\n",large);
+    printf("\nNo of digits is %d\n",nop);
     for(pass=0;pass<nop;pass++)
     {
         for(i=0;i<10;i++)
@@ -66,7 +66,7 @@ void radix(int a[10],int n)
         {
             rem=(a[i]/divisor)%10;
             bucket[rem][bc[rem]]=a[i];
-            bc[rem]=bc[rem]+1;
+            bc[rem] = bc[rem]+1;
         }
         i=0;
         for(k=0;k<10;k++)
@@ -77,6 +77,7 @@ void radix(int a[10],int n)
                 i++;
             }
         }
-        divisor =divisor*10;
+        divisor = divisor*10;
     }
+    
 }
