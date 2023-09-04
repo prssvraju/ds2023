@@ -25,12 +25,12 @@ int main()
         printf("\t%d",a[i]);
     }
     //a[i]=99;
-    radixSort(a,n);
+    mergeSort(a,0,n);
     printf("\nElement after sorting\n");
     for(i=0;i<n;i++)
     {
         printf("\t%d",a[i]);
-    }
+    } 
     return 0;
 }
 void bubbleSort(int a[10],int n)
@@ -119,11 +119,11 @@ int partition(int a[10],int low,int high)
     pivot=a[low];
     while(i<j)
     {
-        while(a[i]<=pivot && i<high)
+        while(a[i]>=pivot && i<high)
         {
             i++;
         }
-        while(a[j]>pivot && j>low)
+        while(a[j]<=pivot && j>low)
         {
             j--;
         }
@@ -168,11 +168,11 @@ void merge(int a[10],int low,int mid,int high)
             b[k]=a[j];
             j++;k++;
         }
-    }
+    }   
     while(i<=mid)
     {
-         b[k]=a[i];
-         k++;i++;
+        b[k]=a[i];
+        k++;i++;
     }
     while(j<=high)
     {

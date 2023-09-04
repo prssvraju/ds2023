@@ -7,13 +7,13 @@ int main()
     int arr[10];
     printf("Enter array length");
     scanf("%d",&n);
-    for(i=0;i<=n;i++)
+    for(i=0;i<n;i++)
     {
         scanf("%d",&arr[i]);
     }
     meargSort(arr,0,n);
     printf("Elements after Sorting"); 
-    for(i=0;i<=n;i++)
+    for(i=0;i<n;i++)
     {
         printf("%d \t",arr[i]);
     } 

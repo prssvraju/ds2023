@@ -1,10 +1,10 @@
 #include<stdio.h>
-void quickSort(int[],int,int);
+void quick_s(int[],int,int);
 int partation(int[],int,int);
 int main()
 {
     int n,i;
-    int arr[10];
+    int arr[20];
     printf("Enter array length");
     scanf("%d",&n);
     for(i=0;i<n;i++)
@@ -12,24 +12,23 @@ int main()
         scanf("%d",&arr[i]);
     }
     arr[i]=99;
-    quickSort(arr,0,n);
+    quick_s(arr,0,n);
     printf("Elements after Sorting"); 
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     { 
         printf("%d \t",arr[i]);
     } 
 }
-void quickSort(int a[10],int low,int high)
+void quick_s(int a[10],int low,int high)
 {
     int j;
     if(low<high)
     {
         j=partation(a,low,high+1);
-        quickSort(a,low,j-1);
-        quickSort(a,j+1,high);
+        quick_s(a,low,j-1);
+        quick_s(a,j+1,high);
     }
 }
-
 int partation(int a[10],int low,int high)
 {
     int i,j,pivot,temp;
@@ -38,7 +37,7 @@ int partation(int a[10],int low,int high)
     pivot=a[low];
     while(i<j)
     {
-        while(a[i]<=pivot && i<high)
+        while(a[i]<=pivot && i<=high)
         {
             i++;
         }
@@ -58,4 +57,3 @@ int partation(int a[10],int low,int high)
     a[j]=temp;
     return j;
 }
-
