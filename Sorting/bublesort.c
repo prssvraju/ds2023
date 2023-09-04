@@ -229,7 +229,7 @@ void radixSort(int a[10],int n)
         i=0;
         for(k=0;k<10;k++)
         {
-            for(j=0;j<bc[k];j++)
+            for(j=0;j<bc[k];k++)
             {
                 a[i]=buckets[k][j];
                 i++;
