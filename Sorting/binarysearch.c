@@ -1,7 +1,8 @@
 #include<stdio.h>
+int b_search(int[],int,int,int);
 int main()
 {
-    int a[10],n,k,low,high,mid,i;
+    int a[10],n,k,low,high,i,index;
     printf("Enter the size of array");
     scanf("%d",&n);
     for(i=0;i<n;i++)
@@ -12,16 +13,28 @@ int main()
     scanf("%d",&k);
     low=0;
     high=n-1;
-    mid=(low+high)/2;
-
+    index=b_search(a,low,high,k);
+    if(index == -1)
+    {
+        printf("Enter element is not found");
+    }
+    else
+    {
+        printf("Element is found at %d",index);
+    }
+    return 0;
+}
+int b_search(int a[10],int low,int high,int k)
+{
+    int mid=0;
     while(low<=high)
     {
-        if(a[mid]==k)
+        mid=(low+high)/2;
+        if(a[mid] == k)
         {
-            printf("element is found at %d",mid);
-            break;
+            return mid;
         }
-        else if(a[mid]>k)
+        else if( a[mid] > k)
         {
             high=mid-1;
         }
@@ -30,12 +43,9 @@ int main()
             low= mid+1;
         }
     }
-    if(low>=high)
+    if(low>high)
     {
-        printf("element not found"
-        
-        );
-
+        return -1;
     }
 
 }

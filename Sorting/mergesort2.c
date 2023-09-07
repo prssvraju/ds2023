@@ -54,16 +54,23 @@ void merge(int a[10],int low,int mid,int high)
             k++;j++;
         }
     }
-    while(j<=high)
+   if(i>mid)
     {
-        b[k]=a[j];
-        k++;j++;
-    }     
-
-    while(i<=mid)
+        while(j<=high)
+        {
+            b[k]=a[j];
+            k++;
+            j++;
+        }
+    }
+    else
     {
+       while(i<=mid)
+       {
         b[k]=a[i];
-        k++;i++;
+        k++;
+        i++;
+       }
     }
     for(i=low;i<=high;i++)
     {
