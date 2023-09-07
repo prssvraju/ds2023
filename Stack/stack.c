@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define MAX 10
+#define MAX 4
 void push(int);
 int pop();
 void display();
@@ -115,7 +115,7 @@ void display()
     {
         for(i=top;i>=0;i--)
         {
-            printf("|%d|\n",stack[top]);
+            printf("|%d|\n",stack[i]);
         }
     }
 }
