@@ -7,10 +7,9 @@ struct stack
     int top;
 };
 void push(struct stack*,int);
-int pop();
-void display();
-int peek();
-int stack[MAX],top=-1;
+int pop(struct stack*);
+void display(struct stack*);
+int peek(struct stack*);
 int main()
 {
     int ch,ele;
@@ -35,7 +34,7 @@ int main()
                 push(&st,ele);
                 break;
         case 2:
-                ele=pop();
+                ele=pop(&st);
                 if(ele==-1)
                 {
                     printf("Stack is empty");
@@ -46,10 +45,10 @@ int main()
                 }
                 break;
         case 3:
-                display();
+                display(&st);
                 break;
         case 4:
-                ele=peek();
+                ele=peek(&st);
                 if(ele==-1)
                 {
                     printf("Stack is empty");
@@ -83,45 +82,45 @@ void push(struct stack *stp,int ele)
         stp->items[stp->top]=ele;
     }
 }
-int pop()
+int pop(struct stack *st)
 {
     int ele;
-    if(top==-1)
+    if(st->top==-1)
     {
         return -1;
     }
     else
     {
-        ele=stack[top];
-        top=top-1;
+        ele=st->items[st->top];
+        st->top=st->top-1;
         return ele;
     }
 }
-int peek()
+int peek(struct stack *st)
 {
     int ele;
-    if(top==-1)
+    if(st->top==-1)
     {
         return -1;
     }
     else
     {
-        ele=stack[top];
+        ele=st->items[st->top];
         return ele;
     }
 }
-void display()
+void display(struct stack *st)
 {
     int i;
-    if(top==-1)
+    if(st->top==-1)
     {
         printf("Stack is empty");
     }
     else
     {
-        for(i=top;i>=0;i--)
+        for(i=st->top;i>=0;i--)
         {
-            printf("|%d|\n",stack[i]);
+            printf("|%d|\n",st->items[i]);
         }
     }
 }

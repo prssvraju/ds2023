@@ -61,8 +61,6 @@ int main()
                 break;
         }
     }
-    
-
     return 0;
 }
 void push(int ele)
