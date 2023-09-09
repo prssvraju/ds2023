@@ -73,38 +73,6 @@ void infixpost(char infix[MAX])
             push(&st,sym);
         }   
     }
-    //  for(i=0;(sym=infix[i])!='\0';i++)
-    // {
-    //     if(isOperand(sym))
-    //     {
-    //         postfix[j]=sym;
-    //         j++;
-    //     }
-    //     else if(sym == '(')
-    //     {
-    //         push(&st,sym);
-    //     }
-    //     else if(sym == ')')
-    //     {
-    //         topsym = pop(&st);
-    //         while(!isEmpty(&st) && topsym!='(')
-    //         {
-    //             postfix[j]=topsym;
-    //             j++;
-    //             topsym = pop(&st);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         while(!isEmpty(&st) && icp(sym)<=isp(peek(&st)))
-    //         {
-    //             topsym = pop(&st);
-    //             postfix[j]=topsym;
-    //             j++;                
-    //         }
-    //         push(&st,sym);
-    //     }
-    // }
     while(!isEmpty(&st))
     {
         topsym=pop(&st);
