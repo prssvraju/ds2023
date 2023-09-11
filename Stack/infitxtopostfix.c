@@ -1,5 +1,5 @@
 #include<stdio.h>
-#define MAX 10
+#define MAX 50
 struct stack
 {
     char items[MAX];
@@ -16,7 +16,7 @@ int icp(char);
 int isp(char);
 int main()
 {
-    int infix[MAX];
+    char infix[MAX];
     st.top=-1;
     printf("Enter string ");
     scanf("%s",infix);
@@ -34,6 +34,7 @@ int isOperand(char sym)
         return 0;
     }
 }
+
 void infixpost(char infix[MAX])
 {
     char postfix[MAX];
@@ -42,7 +43,6 @@ void infixpost(char infix[MAX])
     printf("\nInfix string is %s\n",infix);
     for(i=0;(sym=infix[i])!='\0';i++)
     {
-        printf("\nSymbol is %c\n",sym);
         if(isOperand(sym))
         {
             postfix[j]=sym;
@@ -135,28 +135,53 @@ int isEmpty(struct stack *st)
     }
 }
 
-int isp(char sym)
+// int isp(char sym)
+// {
+//     switch (sym)
+//     {
+//         case '(':   return 0;
+//         case '+':
+//         case '-':   return 1;
+//         case '*':
+//         case '/':   return 2;
+//         case '$':
+//         case '^':   return 3;
+//     }
+// }
+// int icp(char sym)
+// {
+//     switch (sym)
+//     {
+//         case '+':
+//         case '-':   return 1;
+//         case '*':
+//         case '/':   return 2;
+//         case '$':
+//         case '^':   return 3;
+//     }
+// }
+int isp(char c)
 {
-    switch (sym)
+    switch (c)
     {
-        case '(':   return 0;
-        case '+':
-        case '-':   return 1;
-        case '*':
-        case '/':   return 2;
-        case '^':
-        case '$':   return 3;
+        case '(':return 0;
+        case '+': 
+        case '-':return 1;
+        case '*': 
+        case '/':return 2;  
+        case '$': 
+        case '^':return 3;
     }
 }
-int icp(char sym)
+int icp(char c)
 {
-    switch (sym)
+    switch (c)
     {
-        case '+':
-        case '-':   return 1;
-        case '*':
-        case '/':   return 2;
-        case '^':
-        case '$':   return 3;
+        case '+': 
+        case '-':return 1;
+        case '*': 
+        case '/':return 2;  
+        case '$': 
+        case '^':return 3;
     }
 }
