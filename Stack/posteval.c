@@ -9,7 +9,7 @@ struct stack
 };
 void push(struct stack*,double);
 double pop(struct stack*);
-int isOperand(char);
+int isdigit(char);
 double operate(char,double,double);
 double eval(char[]);
 int main()
@@ -31,7 +31,7 @@ double eval(char exp[MAX])
 
     for(i=0;(c=exp[i])!='\0';i++)
     {
-        if(isOperand(c))
+        if(isdigit(c))
         {
             push(&st,(double)c-'0');
         }
@@ -47,7 +47,7 @@ double eval(char exp[MAX])
     }
     return pop(&st);
 }
-int isOperand(char c)
+int isdigit(char c)
 {
     return (c>='0'&&c<='9');
 }
