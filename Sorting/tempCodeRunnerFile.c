@@ -1,1 +1,1 @@
-    while(i<j)
+stp

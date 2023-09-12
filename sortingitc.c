@@ -4,6 +4,8 @@ void selection_s(int[],int);
 void insertion_s(int[],int);
 void quick_s(int[],int,int);
 int partation(int[],int,int);
+void mergesort(int[],int,int);
+void merge(int[],int,int,int);
 //raghu
 int main()
 {
@@ -19,8 +21,8 @@ int main()
     {
         printf("%d\t",a[i]);
     }
-    a[i]=99;
-    quick_s(a,0,n);
+    //a[i]=99;
+    mergesort(a,0,n);
     printf("\nElement After  sorting\n");
     for(i=1;i<=n;i++)
     {
@@ -118,4 +120,49 @@ int partation(int a[10],int low,int high)
     a[low]=a[j];
     a[j]=temp;
     return j;
+}
+void mergesort(int a[10],int low,int high)
+{
+    int mid;
+    if(low<high)
+    {
+        mid=(low+high)/2;
+        mergesort(a,low,mid);
+        mergesort(a,mid+1,high);
+        merge(a,low,mid,high);
+    }
+}
+void merge(int a[10],int low,int mid,int high)
+{
+    int b[10],i,j,k;
+    k=low;
+    i=low;
+    j=mid+1;
+    while(i<=mid && j<=high)
+    {
+        if(a[i]<a[j])
+        {
+            b[k]=a[i];
+            k++;i++;
+        }
+        else
+        {
+            b[k]=a[j];
+            j++;k++;
+        }
+    }
+    while(i<=mid)
+    {
+         b[k]=a[i];
+         k++;i++;
+    }
+    while(j<=high)
+    {
+        b[k]=a[j];
+        j++;k++;
+    }
+    for(i=low;i<=high;i++)
+    {
+        a[i]=b[i];
+    }
 }
