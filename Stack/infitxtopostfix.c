@@ -55,7 +55,7 @@ void infixpost(char infix[MAX])
         else if (sym==')')
         {
             topsym=pop(&st);
-            while(!isEmpty(&st)&& topsym!='(')
+            while(!isEmpty(&st)&& topsym!=')')
             {
                 postfix[j]=topsym;
                 j++;
