@@ -24,51 +24,57 @@ int main()
     return 0;
 }
 void mergeSort(int a[10],int low,int high)
-{
+{   
     int mid;
     if(low<high)
     {
         mid=(low+high)/2;
         mergeSort(a,low,mid);
         mergeSort(a,mid+1,high);
-        merge(a,low,mid,high);
+        merge(a,low,mid,high);   
     }
+   
 }
 void merge(int a[10],int low,int mid,int high)
 {
-   int b[10],i,j,k;
-   i=low;
-   j=mid+1;
-   k=low;
-   while(i<=mid && j<=high)
-   {
-    if(a[i]<=a[j])
+    int b[10],i,j,k;
+    i=low;
+    j=mid+1;
+    k=low;
+    while(i<=mid&&j<=high)
     {
-        b[k]=a[i];
-        k++;
-        i++;
+        if(a[i]<=a[j])
+        {
+            b[k]=a[i];
+            k++;i++;
+        }
+        else
+        {
+            b[k]=a[j];
+            k++;j++;
+        }
+    }
+   if(i>mid)
+    {
+        while(j<=high)
+        {
+            b[k]=a[j];
+            k++;
+            j++;
+        }
     }
     else
     {
-        b[k]=a[j];
-        k++;
-        j++;
-    }
-   }
-   while(i<=mid)
-   {
+       while(i<=mid)
+       {
         b[k]=a[i];
         k++;
         i++;
-   }
-   while(j<=high)
-   {
-        b[k]=a[j];
-        k++;
-        j++;
-   }
-   for(i=low;i<=high;i++)
-   {
-    a[i]=b[i];
-   }
+       }
+    }
+    for(i=low;i<=high;i++)
+    {
+        a[i]=b[i];
+    }
+   
 }

@@ -30,7 +30,7 @@ int main()
     for(i=0;i<n;i++)
     {
         printf("\t%d",a[i]);
-    }
+    } 
     return 0;
 }
 void bubbleSort(int a[10],int n)
@@ -168,11 +168,11 @@ void merge(int a[10],int low,int mid,int high)
             b[k]=a[j];
             j++;k++;
         }
-    }
+    }   
     while(i<=mid)
     {
-         b[k]=a[i];
-         k++;i++;
+        b[k]=a[i];
+        k++;i++;
     }
     while(j<=high)
     {
@@ -229,7 +229,7 @@ void radixSort(int a[10],int n)
         i=0;
         for(k=0;k<10;k++)
         {
-            for(j=0;j<bc[k];j++)
+            for(j=0;j<bc[k];k++)
             {
                 a[i]=buckets[k][j];
                 i++;
