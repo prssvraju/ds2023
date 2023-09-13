@@ -79,7 +79,7 @@ double oper(char c,double opnd1,double opnd2)
 {
     switch(c)
     {
-        case '+': return(opnd1+opnd2);gb
+        case '+': return(opnd1+opnd2);
         case '-': return(opnd1-opnd2);
         case '*': return(opnd1*opnd2);
         case '/': return(opnd1/opnd2);
