@@ -87,6 +87,7 @@ int delete(struct queue *qup)
     {
         return -1;
     }
+    
     else{
         ele=qup->items[qup->front];
         qup->front=qup->front+1;
