@@ -16,9 +16,9 @@ int main()
         printf("\t%d",a[i]);
     }
     a[i]=99;
-    quickSort(a,0,n);
+    quickSort(a,0,n-1);
     printf("\nElement after sorting\n");
-    for(i=1;i<n;i++)
+    for(i=0;i<n;i++)
     {
         printf("\t%d",a[i]);
     }
@@ -29,7 +29,7 @@ void quickSort(int a[10],int low,int high)
     int j;
     if(low<high)
     {
-        j=partition(a,low,high);
+        j=partition(a,low,high+1);
         quickSort(a,low,j-1);
         quickSort(a,j+1,high);
     }

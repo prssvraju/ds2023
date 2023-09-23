@@ -11,7 +11,7 @@ int main()
     {
         scanf("%d",&arr[i]);
     }
-    meargSort(arr,0,n);
+    meargSort(arr,0,n-1);
     printf("Elements after Sorting"); 
     for(i=0;i<n;i++)
     {
