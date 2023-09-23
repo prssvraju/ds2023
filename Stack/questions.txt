@@ -1,0 +1,15 @@
+1. Kernal Name  in siled 18
+    
+    Gaussian Kernel 
+        The advantange is that it is related to euclidean distance
+        Best for highly non-linear problem where values nearby some vector point tend to be of a different class
+
+2. what is y-axis in slide 26
+
+
+4. what is threshold value of p slide number 32
+5. with inclusing and with out inclusion  slide number 38
+6. whtat are the techniques used in feature extraction  slide number 41
+7. resent 50 in slide 50
+
+
