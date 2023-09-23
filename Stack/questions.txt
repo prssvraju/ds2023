@@ -4,6 +4,7 @@
         The advantange is that it is related to euclidean distance
         Best for highly non-linear problem where values nearby some vector point tend to be of a different class
 
+
 2. what is y-axis in slide 26
 
 
