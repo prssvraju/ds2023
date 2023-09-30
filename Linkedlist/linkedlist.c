@@ -9,6 +9,54 @@ struct node * getNode();
 struct node * create();
 struct node * insert(struct node*);
 struct node * delete(struct node *);
+struct node * reverse(struct node *);
+int search(struct node*,int);
+int search(struct node *head,int key)
+{
+    struct node *temp;
+    int flag = 0;
+    temp=head;
+    if(head == NULL)
+    {
+        return -1;
+    }
+    else
+    {
+        while(temp!=NULL)
+        {
+            if(temp->data == key)
+            {
+                flag =1;
+                return key;    
+            }
+            else
+            {
+                flag = 0;
+            }
+            temp=temp->next;
+        }
+        if(flag == 0)
+        {
+            return -1;
+        }
+    }
+}
+struct node * reverse(struct node * head)
+{
+    struct node *temp,*newnode,*rhead;
+    temp=head;
+    rhead = getNode();
+    rhead->data = temp->data;
+    while (temp->next!=NULL)
+    {
+        temp=temp->next;
+        newnode=getNode();
+        newnode->data=temp->data;
+        newnode->next=rhead;
+        rhead=newnode;
+    }
+    return rhead;
+}
 struct node * delete (struct node *head)
 {
     struct node *temp;
@@ -109,13 +157,13 @@ void traversal(struct node*);
 int main()
 {
     struct node* first;
-    int ch;
+    int ch,key,res;
 	first=create();
 	traversal(first);
     while(1)
     {
-        printf("Enter your Choice\n");
-        printf("1.Insert\n2.Delete\n3.traversal\n4.Exit");
+        printf("\nEnter your Choice\n");
+        printf("1.Insert\n2.Delete\n3.traversal\n4.reverse\n5.Search\n6.Exit");
         scanf("%d",&ch);
         switch(ch)
         {
@@ -131,6 +179,22 @@ int main()
                     traversal(first);
                     break;
             case 4:
+                    first = reverse(first);
+                    traversal(first);
+                    break;
+            case 5: printf("\nEnter element to search\n");
+                    scanf("%d",&key);
+                    res = search(first,key);
+                    if(res == -1)
+                    {
+                        printf("\nElement is NOT found in list\n");
+                    }
+                    else
+                    {
+                        printf("\n%d is found in list\n",res);
+                    }
+                    break;
+            case 6:
                     exit(0);
                     break;
             default:
