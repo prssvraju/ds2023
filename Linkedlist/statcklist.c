@@ -70,7 +70,6 @@ void display(struct stack *st)
        printf("|%d|",temp->data);
        temp=temp->next;
     }
-    
 }
 struct node * getNode()
 {
