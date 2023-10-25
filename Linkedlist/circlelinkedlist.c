@@ -1,0 +1,132 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node
+{
+    int data;
+    struct node *next;
+};
+struct node* getNode();
+struct node* create();
+void traversal(struct node*);
+struct node *insert(struct node *);
+struct node *delete(struct node *);
+struct node * getNode()
+{
+    struct node *np;
+    np = (struct node*)malloc(sizeof(struct node));
+    np->data=0;
+    np->next =NULL;
+    return np;
+}
+struct node * create()
+{
+    struct node *head,*first,*newnode;
+    first=getNode();
+    head=first;
+    newnode = getNode();
+    printf("Enter the -99 to stop list");
+    printf("Enter value");
+    scanf("%d",&newnode->data);
+    while (newnode->data!=-99)
+    {
+        first->next = newnode;
+        first=newnode;
+        newnode=getNode();
+        printf("Enter value");
+        scanf("%d",&newnode->data);
+    }
+    
+    return head->next;
+}
+
+int main()
+{
+    int ch;
+    struct node *start;
+    start = create();
+    traversal(start);
+    while (1)
+    {
+        printf("\n**************\nMENU\n***********\n");
+        printf("\n1.insert\n2.display\n3.Delete\n4.Exit\n");
+        printf("\nenter your choice:");
+        scanf("%d", &ch);
+        switch (ch)
+        {
+        case 1:
+            start = insert(start);
+            traversal(start);
+            break;
+        case 2:
+            traversal(start);
+            break;
+        case 3:
+            //start = delete (start);
+            traversal(start);
+            break;
+        case 4:
+            exit(0);
+
+        }
+    }
+}
+struct node *insert(struct node *head)
+{
+    struct node *temp , *newnode;
+    int ch,pos,i;
+    temp = head;
+    newnode = getNode();
+    printf("enter value:");
+    scanf("%d",&newnode->data);
+    printf("\n1.at begining\n2. at end\n3. at given position");
+    printf("\nenter your choice:");
+    scanf("%d", &ch);
+    switch (ch){
+        case 1:
+                while(temp->next!=head)
+                {
+                    temp=temp->next;
+                }
+                newnode->next=head;
+                temp->next = newnode;
+                head=newnode;
+                return head;
+                break;
+        case 2:
+                while(temp->next!=head)
+                {
+                    temp=temp->next;
+                }
+                newnode->next=head;
+                temp->next = newnode;
+                return head;
+                break;
+        case 3: 
+                printf("enter which position");
+                scanf("%d",&pos);
+                if(pos==1){
+                    newnode->next = head;
+                    head = newnode;
+                    return head;
+
+                }
+                else {
+                   for (i=1;i<pos-1;i++){
+                       temp = temp->next;
+                   }
+                   newnode->next = temp->next;
+                   temp->next = newnode;
+                   return head;
+                }
+    }
+}
+void traversal(struct node *head)
+{
+    struct node *temp;
+    temp=head;
+    while (temp!=NULL)
+    {
+        printf("%d->",temp->data);
+        temp=temp->next;
+    }
+}
