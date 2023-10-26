@@ -63,7 +63,7 @@ int main()
             traversal(start);
             break;
         case 3:
-            //start = delete (start);
+            start = delete (start);
             traversal(start);
             break;
         case 4:
@@ -118,7 +118,6 @@ struct node *insert(struct node *head)
                         temp->next = newnode;
                         head=newnode;
                         return head;
-
                     }
                     else {
                         for(i=1;i<pos-1;i++)
@@ -130,7 +129,7 @@ struct node *insert(struct node *head)
                         return head;
                     }
             default:printf("Invalid Choice");
-    }
+     }
 
     }
 }
@@ -138,10 +137,102 @@ void traversal(struct node *head)
 {
     struct node *temp;
     temp=head;
-    while (temp->next!=head)
+    if(head == NULL)
     {
-        printf("%d->",temp->data);
-        temp=temp->next;
+        printf("list is empty");
     }
-    printf("%d->",temp->data);
+    else
+    {
+        while (temp->next!=head)
+        {
+            printf("%d->",temp->data);
+            temp=temp->next;
+        }
+        printf("%d->",temp->data);
+    }
+    
+}
+
+struct node *delete(struct node *head){
+    int ch,pos,i;
+    struct node *temp,*secondtemp;
+    temp = head;
+
+    if (temp==NULL){
+        printf("list is empty");
+    }
+    else{
+        printf("\n1.at begining\n2. at end\n3. at given position");
+        printf("\nenter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+                if(temp->next==head)
+                {
+                    head=NULL;
+                    return head;
+                }
+                else
+                {
+                    while(temp->next!=head)
+                    {
+                        temp=temp->next;
+                    }
+                    secondtemp=head->next;
+                    temp->next = secondtemp;
+                    head->next=NULL;
+                    return secondtemp;
+                }
+                break;
+            case 2:
+                    if(temp->next==head)
+                    {
+                        head=NULL;
+                        return head;
+                    }
+                    else
+                    {
+                        while(temp->next->next!=head)
+                        {
+                            temp=temp->next;
+                        }
+                        temp->next=head;
+                        return head;
+                    }
+                break;
+            case 3 :
+                printf("enter which position");
+                scanf("%d",&pos);
+                if(pos==1)
+                {
+                    if(temp->next==head)
+                        {
+                            head=NULL;
+                            return head;
+                        }
+                        else
+                        {
+                            while(temp->next!=head)
+                            {
+                                temp=temp->next;
+                            }
+                            secondtemp=head->next;
+                            temp->next = secondtemp;
+                            head->next=NULL;
+                            return secondtemp;
+                        }
+                }
+                else{
+                    for(i=1;i<pos-1;i++)
+                    {
+                        temp=temp->next;
+
+                    }
+                    temp->next=temp->next->next;
+                    return head;
+                }
+                break;
+        }       
+    }
 }
