@@ -94,6 +94,7 @@ struct node *insert(struct node *head){
     printf("\n1.at begining\n2. at end\n3. at given position");
     printf("\nenter your choice:");
     scanf("%d", &ch);
+
     switch (ch){
         case 1:
                 newnode->next = head;
@@ -112,12 +113,82 @@ struct node *insert(struct node *head){
                 break;
         case 3: 
                 printf("enter which position");
+                scanf("%d",&pos);
                 printf("Temp/Head 1 Data is ");
+
+                if(pos==1){
+                newnode->next = head;
+                head->prev = newnode;
+                head = newnode;
+                return head;
+                }
+                else {
+                    printf("Temp/Head 2 Data is %d",temp->data);
+                   for (i=1;i<pos-1;i++){
+                       temp = temp->next;
+                   }
+                   printf("Temp Data is %d",temp->data);
+                   newnode->next=temp->next;
+                   newnode->prev=temp;
+                   temp->next->prev=newnode;
+                   temp->next=newnode;
+                   
+                }
                 break;
-        default :
+        default:
                 printf("Invalid Choice");
                 break;
+    }  
+}
+
+struct node *delete(struct node *head){
+    int ch,pos,i;
+    struct node *temp;
+    temp = head;
+
+    if (head==NULL){
+        printf("list is empty");
+    }
+    else{
+        printf("\n1.at begining\n2. at end\n3. at given position");
+        printf("\nenter your choice:");
+        scanf("%d",&ch);
+        switch(ch)
+        {
+            case 1:
+                head =head->next;
+                temp->next= NULL;
+                return head;
+                break;
+            case 2:
+                while(temp->next->next!=NULL)
+                {
+                    temp=temp->next;
+
+
+                }
+                temp->next=NULL;
+                return head;
+                break;
+            case 3 :
+                printf("enter which position");
+                scanf("%d",&pos);
+                if(pos==1)
+                {
+                    head =head->next;
+                    temp->next= NULL;
+                    return head;
+
+                }
+                else{
+                    for(i=1;i<pos-1;i++)
+                    {
+                        temp=temp->next;
+
+                    }
+                    temp->next=temp->next->next;
+                }
+        }       
 
     }
-  
 }
