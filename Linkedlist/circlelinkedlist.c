@@ -34,6 +34,8 @@ struct node * create()
         newnode=getNode();
         printf("Enter value");
         scanf("%d",&newnode->data);
+        newnode->next = head->next;
+
     }
     
     return head->next;
@@ -67,6 +69,7 @@ int main()
         case 4:
             exit(0);
 
+        default:printf("Invalid Choice");
         }
     }
 }
@@ -78,55 +81,67 @@ struct node *insert(struct node *head)
     newnode = getNode();
     printf("enter value:");
     scanf("%d",&newnode->data);
-    printf("\n1.at begining\n2. at end\n3. at given position");
-    printf("\nenter your choice:");
-    scanf("%d", &ch);
-    switch (ch){
-        case 1:
-                while(temp->next!=head)
-                {
-                    temp=temp->next;
-                }
-                newnode->next=head;
-                temp->next = newnode;
-                head=newnode;
-                return head;
-                break;
-        case 2:
-                while(temp->next!=head)
-                {
-                    temp=temp->next;
-                }
-                newnode->next=head;
-                temp->next = newnode;
-                return head;
-                break;
-        case 3: 
-                printf("enter which position");
-                scanf("%d",&pos);
-                if(pos==1){
-                    newnode->next = head;
-                    head = newnode;
+    while(1)
+    {
+        printf("\n1.at begining\n2. at end\n3. at given position");
+        printf("\nenter your choice:");
+        scanf("%d", &ch);
+        switch (ch){
+            case 1:
+                    while(temp->next!=head)
+                    {
+                        temp=temp->next;
+                    }
+                    newnode->next=head;
+                    temp->next = newnode;
+                    head=newnode;
                     return head;
+                    break;
+            case 2:
+                    while(temp->next!=head)
+                    {
+                        temp=temp->next;
+                    }
+                    newnode->next=head;
+                    temp->next = newnode;
+                    return head;
+                    break;
+            case 3: 
+                    printf("enter which position");
+                    scanf("%d",&pos);
+                    if(pos==1){
+                        while(temp->next!=head)
+                        {
+                            temp=temp->next;
+                        }
+                        newnode->next=head;
+                        temp->next = newnode;
+                        head=newnode;
+                        return head;
 
-                }
-                else {
-                   for (i=1;i<pos-1;i++){
-                       temp = temp->next;
-                   }
-                   newnode->next = temp->next;
-                   temp->next = newnode;
-                   return head;
-                }
+                    }
+                    else {
+                        for(i=1;i<pos-1;i++)
+                        {
+                            temp=temp->next;
+                        }
+                        newnode->next=temp->next;
+                        temp->next=newnode;
+                        return head;
+                    }
+            default:printf("Invalid Choice");
+    }
+
     }
 }
 void traversal(struct node *head)
 {
     struct node *temp;
     temp=head;
-    while (temp!=NULL)
+    while (temp->next!=head)
     {
         printf("%d->",temp->data);
         temp=temp->next;
     }
+    printf("%d->",temp->data);
 }
