@@ -10,7 +10,7 @@ struct node* getNode();
 struct node* create();
 void traversal(struct node*);
 struct node *insert(struct node *);
-//struct node *delete(struct node *);
+struct node *delete(struct node *);
 int main()
 {
     int ch;
@@ -33,7 +33,7 @@ int main()
             traversal(head);
             break;
         case 3:
-            //head = delete (head);
+            head = delete (head);
             traversal(head);
             break;
         case 4:
@@ -132,7 +132,7 @@ struct node *insert(struct node *head){
                    newnode->prev=temp;
                    temp->next->prev=newnode;
                    temp->next=newnode;
-                   
+                   return head;
                 }
                 break;
         default:
@@ -156,17 +156,17 @@ struct node *delete(struct node *head){
         switch(ch)
         {
             case 1:
-                head =head->next;
-                temp->next= NULL;
+                 head = head->next;
+                 head->prev->next = NULL;
+                 head->prev= NULL;
                 return head;
                 break;
             case 2:
                 while(temp->next->next!=NULL)
                 {
                     temp=temp->next;
-
-
                 }
+                temp->next->prev=NULL;
                 temp->next=NULL;
                 return head;
                 break;
@@ -175,18 +175,19 @@ struct node *delete(struct node *head){
                 scanf("%d",&pos);
                 if(pos==1)
                 {
-                    head =head->next;
-                    temp->next= NULL;
-                    return head;
-
+                     head = head->next;
+                     head->prev->next = NULL;
+                     head->prev= NULL;
+                     return head;
                 }
                 else{
                     for(i=1;i<pos-1;i++)
                     {
                         temp=temp->next;
-
                     }
                     temp->next=temp->next->next;
+                    temp->next->prev=temp;
+                    return head;
                 }
         }       
 
