@@ -7,6 +7,7 @@ struct node
 };
 struct node* inserPoly(struct node*,int,int);
 struct node* addPoly(struct node*,struct node*);
+struct node* polyMul(struct node*,struct node*);
 struct node* getNode(int,int);
 void display(struct node*);
 struct node* getNode(int cof,int exp)
@@ -59,14 +60,38 @@ int main()
         scanf("%d%d",&cof,&exp);
         p2head = inserPoly(p2head,cof,exp);
     }
-
-
     display(p1head);
     display(p2head);
-    p3head=addPoly(p1head,p2head);
-    printf("\nAddition of two polynomial Expression is \n");
+    // polynomial Addition
+    // p3head=addPoly(p1head,p2head);
+    // printf("\nAddition of two polynomial Expression is \n");
+    p3head=polyMul(p1head,p2head);
+    printf("\n Multiplication of two polynomial Expression is \n");
+
     display(p3head);
     return 0;
+}
+struct node* polyMul(struct node *ph1,struct node *ph2)
+{
+    struct node *tph1,*tph2;
+    struct node *pos =NULL,*sop=NULL;
+    int c,e;
+    tph1=ph1; 
+    while(tph1!=NULL)
+    {
+        tph2=ph2;
+        while(tph2!=NULL)
+        {
+            c=tph1->cof*tph2->cof;
+            e=tph1->exp+tph2->exp;
+            pos=inserPoly(pos,c,e);
+            tph2=tph2->next;
+        }
+        sop=addPoly(sop,pos);
+        pos = NULL;
+        tph1=tph1->next;
+    }
+    return sop;
 }
 struct node * addPoly(struct node *p1head,struct node *p2head)
 {
