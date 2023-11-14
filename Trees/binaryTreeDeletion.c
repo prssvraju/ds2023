@@ -138,29 +138,41 @@ void del(nodeptr p, int a)
 				parent=p;
 				p=p->left;
 			}
-			else if (a>p->info)
+			else
 			{
 				parent=p;
 				p=p->right;
 			}
 		}
 		if(p==NULL)
-			printf("\nElement not found in BST");
-		else if(a==p->info)
+		{
+			printf("\n element is not found");
+		}
+		else if(p->info==a)
+		{
 			del1(parent,p);
+		}
 	}
 
 }
 void del1(nodeptr parent, nodeptr p)
 {
-	if((p->left==NULL)&&(p->right==NULL))
+	if(p->left == NULL && p->right == NULL)
+	{
 		nochild(parent,p);
-	else if((p->left==NULL)&&(p->right!=NULL))
-		rightchild(parent,p);
-	else if ((p->left!=NULL)&&(p->right==NULL))
+	}
+	else if(p->left!=NULL && p->right==NULL)
+	{
 		leftchild(parent,p);
-	else if((p->left!=NULL)&&(p->right!=NULL))
+	}
+	else if(p->left==NULL && p->right!=NULL)
+	{
+		rightchild(parent,p);
+	}
+	else if(p->left!=NULL && p->right!=NULL)
+	{
 		twochilds(parent,p);
+	}
 }
 void nochild(nodeptr parent, nodeptr p)
 {
